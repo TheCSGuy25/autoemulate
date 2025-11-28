@@ -642,13 +642,14 @@ def plot_loss(
     """
 
     try:
-        history = model.loss_history
-    except:
-        raise AttributeError("Emulator does not have a Loss history")
+        has_epochs = model.epochs
+    except AttributeError:
+        raise AttributeError
 
     if figsize is None:
         figsize = (6, 6)
 
+    history = model.loss_history
     fig, ax = plt.subplots(figsize=figsize)
     ax.plot(range(1, len(history) + 1), history)
     ax.set_xlabel("Epochs")

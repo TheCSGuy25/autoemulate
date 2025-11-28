@@ -89,7 +89,7 @@ def test_plot_loss(model_class, should_raise, title):
 
     if should_raise:
         with pytest.raises(AttributeError):
-            plotting.plot_loss(model=model, title=title)
+            fig, ax = plotting.plot_loss(model=model, title=title)
         return
 
     fig, ax = plotting.plot_loss(model=model, title=title)
